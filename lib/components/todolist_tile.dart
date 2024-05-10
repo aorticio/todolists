@@ -11,10 +11,12 @@ class ToDoListTile extends StatelessWidget {
   final Function() onPressed;
   final String data;
   final Function() onDelete;
+  final Widget page;
   const ToDoListTile({super.key,
      required this.data,
      required this.onPressed,
      required this.onDelete,
+     required this.page,
      });
      
 
@@ -32,27 +34,16 @@ class ToDoListTile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TextButton(child: Text(data), onPressed: () {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyCalendar(),));
+              Navigator.push(
+                context, MaterialPageRoute(builder: (context) => page)
+              );
             },),
-            Column(
-              children: [ Column(
-                children: [
-                  TextButton(
-                    child: Text(data),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => MyProfilePage(),));
-                  },
-                  ),
-                  Icon(Icons.edit),
-                  TextButton( child: Text(data),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => MyTasks(),));             
-                 }
-              ),
-              ],
-            ),
-          ],
-        ),
+            IconButton(
+              icon: const Icon(Icons.create),
+              onPressed: () {
+
+              },
+            )
       ]),
     ));
   }

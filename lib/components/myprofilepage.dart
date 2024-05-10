@@ -5,7 +5,7 @@ import 'package:todolist/main.dart';
 void main() {
   runApp(MyApp());
 }
-abstract class MyProfilePage extends StatefulWidget {
+class MyProfilePage extends StatelessWidget {
   const MyProfilePage({super.key});
   
   get Get => null;

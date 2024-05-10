@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:todolist/components/mycalendar.dart';
+import 'package:todolist/components/myprofilepage.dart';
 import 'package:todolist/components/todolist_tile.dart';
 import 'package:todolist/services/firebase.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -44,6 +46,7 @@ void openDialogBox({String? docID}) {
 void onDelete(String docID){
   tasks.deleteTask(docID);
 }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,8 +54,7 @@ void onDelete(String docID){
          backgroundColor: Colors.white,
          onPressed: () {openDialogBox();
          },
-         child: Icon(Icons.add,
-         ),
+         child: Icon(Icons.add),
         ),
      backgroundColor: Color.fromARGB(255, 162, 227, 212),
       appBar: AppBar(
@@ -78,6 +80,13 @@ void onDelete(String docID){
                 data: doc['task'], 
                 onPressed: () => openDialogBox(docID: doc.id),
                 onDelete: () => onDelete(doc.id),
+                page: doc['task'] == 'My Profile'
+                  ? MyProfilePage()
+                  : doc['task'] == 'My Calendar'
+                  ? MyCalendar()
+                  : Scaffold(
+                    body: Placeholder(),
+                  ),
                 );
             }
           );

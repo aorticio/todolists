@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
 class MyTasks extends StatelessWidget {
-MyTasks({
-  Key? key,
-  required String data,
-  required dynamic Function() onPressed,
-  required dynamic Function() onDelete,
-     });
+  String data;
+  dynamic Function() onPressed;
+  dynamic Function() onDelete;
+
+  MyTasks({
+    Key? key,
+    required this.data,
+    required this.onPressed,
+    required this.onDelete,
+  });
      
 
   @override
