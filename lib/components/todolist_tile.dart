@@ -1,22 +1,22 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:todolist/components/mytasks.dart';
-import 'package:todolist/components/mycalendar.dart';
-import 'package:todolist/components/myprofilepage.dart';
-import 'package:todolist/components/mytasks.dart';
-import 'package:todolist/components/mytabbedpage.dart';
 
 class ToDoListTile extends StatelessWidget {
   final Function() onPressed;
   final String data;
   final Function() onDelete;
+  final Widget? page;
   const ToDoListTile({super.key,
      required this.data,
      required this.onPressed,
      required this.onDelete,
+     required this.page
      });
      
+       get itemBuilder => null;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -32,28 +32,13 @@ class ToDoListTile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TextButton(child: Text(data), onPressed: () {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyCalendar(),));
-            },),
-            Column(
-              children: [ Column(
-                children: [
-                  TextButton(
-                    child: Text(data),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => MyProfilePage(),));
-                  },
-                  ),
-                  Icon(Icons.edit),
-                  TextButton( child: Text(data),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => MyTasks(),));             
-                 }
-              ),
-              ],
+              Navigator.push(context, MaterialPageRoute(builder: (context) => page!,));
+            },
             ),
-          ],
+            IconButton(onPressed: onDelete, icon: Icon(Icons.delete)),
+            ]
+          ),
         ),
-      ]),
-    ));
+      );
   }
 }

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:todolist/main.dart';
 
-void main() {
-  runApp(MyApp());
-}
-abstract class MyProfilePage extends StatefulWidget {
+class MyProfilePage extends StatefulWidget {
   const MyProfilePage({super.key});
-  
-  get Get => null;
 
+  @override
+  State<MyProfilePage> createState() => _MyProfilePageState();
+}
+
+class _MyProfilePageState extends State<MyProfilePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -86,5 +85,5 @@ abstract class MyProfilePage extends StatefulWidget {
         ),
       )
     );
-  }    
+  }
 }
