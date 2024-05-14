@@ -25,7 +25,7 @@ class MyTask extends StatelessWidget {
                         fontSize:30, 
                         fontWeight:FontWeight.w500, ) ,)
                       ,)
-                  ],,),
+                  ],),
               )
             ],     
           ),
